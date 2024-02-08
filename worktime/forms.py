@@ -31,9 +31,9 @@ class CustomUserForm(forms.ModelForm):
         fields = '__all__'
 
 
-# EmployeeFormSet = inlineformset_factory(CustomUser, Employee, form=CustomUserForm,
-#                                         formset=EmployeeForm,
-#                                         extra=1, max_num=20, can_delete=False)
+EmployeeFormSet = inlineformset_factory(CustomUser, Employee, form=CustomUserForm,
+                                        formset=EmployeeForm,
+                                        extra=1, max_num=20, can_delete=False)
 
 
 class TimesheetForm(forms.ModelForm):
