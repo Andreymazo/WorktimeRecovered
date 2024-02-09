@@ -1,12 +1,10 @@
 import datetime
-
 from django.core.management import BaseCommand
 from django.db.models import DurationField, ExpressionWrapper, F, IntegerField, Sum
-
 from django.utils import timezone
 
 from config.settings import BASE_DIR, STATIC_FILES_DIRS
-from workingtime.models import CustomUser, Employee, Employer, Timesheet, WorkTime
+from worktime.models import CustomUser, Employee, Employer, Timesheet, WorkTime
 
 
 # from users.models import CustomUser
@@ -14,21 +12,21 @@ from workingtime.models import CustomUser, Employee, Employer, Timesheet, WorkTi
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        # w = WorkTime.objects.all().last()
-        # w = Timesheet.objects.get(employee='3')
-        # w = WorkTime.objects.all().latest('start_break_safe_sheets').exists()
-        w = WorkTime.objects.all()
-        e = Timesheet.objects.all().exclude(time_break=None)
-        ee = e.latest('time_break').time_break
-        print(ee)
-        # for i in w:
-        #     print(i.start_break_safe_sheets)
-        ww = w.exclude(start_break_safe_sheets=None)
-        # for i in ww:
-        #     print(i.start_break_safe_sheets)
-        v=ww.latest('start_break_safe_sheets').start_break_safe_sheets
-
-        print(ee-v)
+        # # w = WorkTime.objects.all().last()
+        # # w = Timesheet.objects.get(employee='3')
+        # # w = WorkTime.objects.all().latest('start_break_safe_sheets').exists()
+        # w = WorkTime.objects.all()
+        # e = Timesheet.objects.all().exclude(time_break=None)
+        # ee = e.latest('time_break').time_break
+        # print(ee)
+        # # for i in w:
+        # #     print(i.start_break_safe_sheets)
+        # ww = w.exclude(start_break_safe_sheets=None)
+        # # for i in ww:
+        # #     print(i.start_break_safe_sheets)
+        # v=ww.latest('start_break_safe_sheets').start_break_safe_sheets
+        # print(ee-v)
+        print('BASE_DIR', BASE_DIR)
         # print(w.worktime.start_break_safe_sheets)
 
         # print(w)

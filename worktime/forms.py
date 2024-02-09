@@ -37,12 +37,16 @@ EmployeeFormSet = inlineformset_factory(CustomUser, Employee, form=CustomUserFor
 
 
 class TimesheetForm(forms.ModelForm):
-    datetime_start = DateTimeField(widget=DatePickerInput(format='%y-%m-%d'),
+    datetime_start = DateTimeField(
+        # widget=DatePickerInput(format='%y-%m-%d'), Если раскомментировать, вылезает предупреждение, что надо формат , видимо на темплейте тоже создать
+                                   
                          input_formats=('%y-%m-%d',),
                          required=False,
                          )
                          
-    datetime_complete = DateTimeField(widget=DatePickerInput(format='%y-%m-%'),
+    datetime_complete = DateTimeField(
+        #widget=DatePickerInput(format='%y-%m-%'),
+                                      
                          input_formats=('%y-%m-%d',),
                          required=False,
                          )
