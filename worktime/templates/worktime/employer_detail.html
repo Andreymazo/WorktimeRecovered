@@ -1,0 +1,32 @@
+{% block content %}
+<body>
+{{object_list}}
+{{total_time}}
+{{cc}}
+</body>
+
+<h1> Employee detail </h1>
+  <h3> Employee: {{c.name}}</h3>
+        <table class="table table-dark table-striped">
+        {{c}}
+            <thead>
+                <tr>
+                  <th scope="col">Customuser</th>
+                  <th scope="col"> Name</th>
+                  <th scope="col">Employer </th>
+                    <th scope="col">Engaged</th>
+                    <th scope="col">Total working hours</th>
+
+
+                </tr>
+            </thead>
+                    <td>  {{c.name}}</td>
+                    <td> {{c.date}}</td>
+                    <td> {{c.engaged}}</td>
+                    <td> {{c.total_time}}</td>
+                    <td> {{total_time}}</td>
+
+
+            <td> {{general_total_time}}</td>
+
+{% endblock %}

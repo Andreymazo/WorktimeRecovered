@@ -1,0 +1,52 @@
+{% include 'worktime/includes/main_menu.html' %}
+
+ {% load render_table from django_tables2 %}
+<!doctype html>
+<html>
+    <head>
+        <h2>List of employers</h2>
+    </head>
+    <body>
+    {{object_list}}
+      <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+                <th scope="col">Employer id</th>
+                <th scope="col">Employer Name</th>
+                <th scope="col">Joined</th>
+                <th scope="col">Employer customuser id</th>
+                <!-- customuser = models.OneToOneField('worktime.CustomUser', on_delete=models.CASCADE)
+                name = models.CharField(max_length=150, verbose_name='Работодатель')
+                joined = models.DateTimeField(auto_now_add=True) -->
+            </tr>
+          </thead>
+
+ <tbody>
+        {% for object in object_list %}
+                <tr>
+
+
+                    <a class="btn btn-outline-light w-50" href="{% url 'worktime:employer_detail' object.pk %}"></a>
+                    <td>{{object.id}}</td>
+                    <td> {{ object.name }} </td>
+                    <td>{{object.joined}}</td>
+                    <td>{{object.customuser}}</td>
+
+                    <td>
+                        <a class="btn.btn-default" href="{% url 'worktime:customuser_create' object.pk %}" >Update</a>
+                            <a class="btn.btn-default" href="{% url 'worktime:customuser_create' %}" >Create</a>
+                            <a class="btn.btn-default" href="{% url 'worktime:employee_delete' object.pk %}" >Delete</a>
+                    </td>
+                </tr>
+        {% endfor %}
+          </tbody>
+
+    {% for item in object_list %}
+
+    <a href="{% url 'worktime:employee_delete' item.pk %}" type="submit" class="btn"><button>{{ item.id }} {{item.name}}</button></a>
+
+    {% endfor %}
+        {% render_table object_list %}
+
+    </body>
+</html>

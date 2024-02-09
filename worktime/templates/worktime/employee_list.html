@@ -7,7 +7,7 @@
     {% render_table table %}
 
     {% for item in items %}
-    <a href="{% url 'workingtime:delete_item' record.pk %}" type="submit" class="btn"><button>{{ item.id }}</button></a>
+    <a href="{% url 'worktime:delete_item' record.pk %}" type="submit" class="btn"><button>{{ item.id }}</button></a>
     {{ record.item }}
     {% endfor %}
 

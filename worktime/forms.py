@@ -5,7 +5,7 @@ from django.forms import inlineformset_factory, DateTimeField
 from django.utils import timezone
 from pip._internal.utils._jaraco_text import _
 
-from worktime.models import Employee, Timesheet, CustomUser, WorkTime
+from worktime.models import Employer, Employee, Timesheet, CustomUser, WorkTime
 
 
 class MyAuthForm(AuthenticationForm):
@@ -18,11 +18,18 @@ class MyAuthForm(AuthenticationForm):
         'inactive': _("This account is inactive."),
     }
 
+class EmployerForm(forms.ModelForm):
+
+    class Meta:
+        model = Employer
+        fields = ['name']
+
 
 class EmployeeForm(forms.ModelForm):
     class Meta:
         model = Employee
         fields = '__all__'
+        # engaged = DateTimeField()
 
 
 class CustomUserForm(forms.ModelForm):

@@ -1,6 +1,6 @@
 from django.core.management import BaseCommand
 
-from workingtime.models import CustomUser, Employer
+from worktime.models import CustomUser, Employer
 
 
 # from users.models import CustomUser

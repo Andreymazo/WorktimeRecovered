@@ -71,6 +71,15 @@ class Employer(models.Model):
     def __str__(self):
         return f'{self.id} {self.name}'
 
+class EmployerTable(tables.Table):
+    class Meta:
+        model = Employer
+        empty_text = _(
+            "No hay ninguna asignatura que satisfaga los criterios de búsqueda."
+        )
+        template_name = "django_tables2/bootstrap3.html"
+        per_page = 20
+
 
 class EmployerTable(tables.Table):
     class Meta:

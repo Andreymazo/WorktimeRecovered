@@ -6,8 +6,8 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
 
-from worktime.forms import EmployeeForm, CustomUserForm, EmployeeFormSet
-from worktime.models import CustomUser, Employee
+from worktime.forms import EmployeeForm, CustomUserForm, EmployeeFormSet, EmployerForm
+from worktime.models import CustomUser, Employee, Employer
 
 
 # CompanyFormSet = inlineformset_factory(Company, CompanyImage, fields='__all__')
@@ -86,7 +86,6 @@ class CustomuserCreateWithEmployee(PermissionRequiredMixin, CreateView):  #
     model = CustomUser
     form_class = CustomUserForm
     template_name = 'worktime/customuser_with_employee.html'
-    success_url = reverse_lazy('worktime:customuser_lst')
     permission_required = ["worktime.add_customuser", "worktime.view_customuser"]
 
     # def get_queryset(self, *args, **kwargs):
@@ -117,7 +116,7 @@ class CustomuserCreateWithEmployee(PermissionRequiredMixin, CreateView):  #
         self_req_employee_id = CustomUser.objects.get(email=self.request.user.email)
         print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', self_req_employee_id.email)
         if not self.request.user.is_authenticated or self_req_employee_id.email in lst_employees_emails:
-            login_url = reverse_lazy('workingtime:login')
+            login_url = reverse_lazy('worktime:login')
             return redirect(login_url)
         context_data = self.get_context_data()
         formset = context_data['formset']
@@ -128,11 +127,13 @@ class CustomuserCreateWithEmployee(PermissionRequiredMixin, CreateView):  #
             if formset.is_valid():
                 print('=+++++++++++++', formset.instance)
                 formset.instance = self.object
+                print('=+++++++++++++', formset.instance)
                 formset.save()
             else:
                 # return super(CustomuserCreateWithEmployee, self).form_invalid(form)
                 return HttpResponse("Failure")
         return super(CustomuserCreateWithEmployee, self).form_valid(form)
+    success_url = reverse_lazy('worktime:customuser_lst2')
     # def get(self, request, *args, **kwargs):
     #     print('Get Get get')
     #     form = CustomUserForm()
@@ -221,3 +222,46 @@ class CustomuserUpdateWithEmployee(PermissionRequiredMixin, UpdateView):  #
                 # return super(CustomuserCreateWithEmployee, self).form_invalid(form)
                 return HttpResponse("Failure")
         return super(CustomuserUpdateWithEmployee, self).form_valid(form)
+
+class CustomuserCreateWithEmployer(PermissionRequiredMixin, CreateView):  #
+    model = CustomUser
+    form_class = CustomUserForm
+    template_name = 'worktime/customuser_with_employee.html'
+    permission_required = ["worktime.add_customuser", "worktime.view_customuser"]
+
+    def get_context_data(self, **kwargs):
+        # print('super().get_context_data(**kwargs)', super().get_context_data(**kwargs))
+        context_data = super().get_context_data(**kwargs)
+        FormSet = inlineformset_factory(self.model, Employer, form=EmployerForm, extra=1)
+
+        if self.request.method == 'POST':
+            formset = FormSet(self.request.POST, instance=self.object)
+        else:
+            formset = FormSet(instance=self.object)
+
+        context_data['formset'] = formset
+        return context_data
+
+    def form_valid(self, form):
+        lst_employees_emails = [i.customuser.email for i in Employee.objects.all()]
+        # print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', lst_employees_emails)
+        self_req_employee_id = CustomUser.objects.get(email=self.request.user.email)
+        # print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', self_req_employee_id.email)
+        if not self.request.user.is_authenticated or self_req_employee_id.email in lst_employees_emails:
+            login_url = reverse_lazy('worktime:login')
+            return redirect(login_url)
+        context_data = self.get_context_data()
+        formset = context_data['formset']
+        print(self.request.method)
+        # print('form', form)
+        with transaction.atomic():
+            self.object = form.save()
+            if formset.is_valid():
+                # print('=+++++++++++++', formset.instance)
+                formset.instance = self.object
+                # print('=+++++++++++++', formset.instance)
+                formset.save()
+            else:
+                # return super(CustomuserCreateWithEmployee, self).form_invalid(form)
+                return HttpResponse("Failure")
+        return super(CustomuserCreateWithEmployee, self).form_valid(form)

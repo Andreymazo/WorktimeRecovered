@@ -1,5 +1,4 @@
 from datetime import timedelta
-
 from django.contrib import messages
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.views import LoginView, PasswordResetView
@@ -19,13 +18,13 @@ from pip._internal.utils._jaraco_text import _
 
 from config import settings
 from worktime.filters import CustomUserFilter, TimesheetFilter
-from worktime.forms import MyAuthForm, CustomUserForm, TimesheetForm
+from worktime.forms import MyAuthForm, CustomUserForm, TimesheetForm, EmployerForm
 #, WorkTimeForm, EmployeeForm, 
 
-from worktime.models import CustomUser, EmployeeTable, Employee, Timesheet, TimesheetTable
+from worktime.models import CustomUser, CustomUserTable, EmployeeTable, Employee, EmployerTable, Timesheet, TimesheetTable, Employer
 # , \
     #  WorkTime, WorkTimeTable
-#Employer, CustomUserTable,
+#, CustomUserTable,
 
 
 class CustomLoginView(LoginView):
@@ -47,6 +46,29 @@ class CustomUserLst(ListView):
         model = CustomUser
         fields = '__all__'
 
+
+class FilteredCustomUserListView(SingleTableMixin, FilterView):
+    table_class = CustomUserTable
+    model = CustomUser
+    template_name = "workingtime/customuser_list.html"
+    filterset_class = CustomUserFilter
+
+    # Сотрутник может видеть только свои данные, если попадет на этот ендпоинт
+
+    def get_queryset(self):
+        queryset = CustomUser.objects.all()
+        lst_employees_emails = [i.customuser.email for i in Employee.objects.all()]
+        if not self.request.user.is_authenticated:
+            login_url = reverse_lazy('workingtime:login')
+            return redirect(login_url)
+        if self.request.user.email in lst_employees_emails:
+            self_req_employee_id = CustomUser.objects.get(email=self.request.user.email)
+            queryset = Employee.objects.filter(id=self_req_employee_id.employee.id)
+            return queryset
+        else:
+            return queryset
+        
+
 # class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
 #     template_name = 'password_reset.html'
 #     email_template_name = 'password_reset_email.html'
@@ -62,6 +84,41 @@ class CustomUserLst(ListView):
 
 # from django_tables2 import TemplateColumn, LinkColumn
 
+
+class EmployerFilteredListView(SingleTableMixin, FilterView):
+    table_class = EmployerTable
+    model = Employer
+    template_name = "worktime/employer_list.html"
+    filterset_class = CustomUserFilter
+
+    # Работодатель может видеть только свои данные, если попадет на этот ендпоинт
+
+    def get_queryset(self):
+        queryset = Employer.objects.all()
+        lst_employers_emails = [i.customuser.email for i in Employer.objects.all()]
+        # print('===============', lst_employers_emails)
+        if not self.request.user.is_authenticated:
+            login_url = reverse_lazy('worktime:login')
+            return redirect(login_url)
+        if self.request.user.email in lst_employers_emails:
+            self_req_employer_id = CustomUser.objects.get(email=self.request.user.email)
+            queryset = Employer.objects.filter(id=self_req_employer_id.employee.id)
+            return queryset
+        
+        else:
+            return queryset
+        
+# class EmployerCreate(CreateView): Просто криейтить не получается .емэйл в другой модели
+#     model = Employer
+#     form_class = EmployerForm
+#     success_url = reverse_lazy('worktime:employer_lst')
+
+
+
+class EmployerDetail(DetailView):
+    model = Employer
+    template_name = 'worktime/employer_detail.html'
+    # form_class = EmployerForm
 
 class EmploeeTableView(SingleTableView):
     table_class = EmployeeTable
@@ -196,10 +253,10 @@ from django.db.models import DurationField, ExpressionWrapper, F, IntegerField, 
 #         # return self.render_to_response(context)#"workingtime/employee_detail.html",
 
 
-# class EmployeeDelete(DeleteView):
-#     model = Employee
-#     template_name = 'workingtime/employee_confirm_delete.html'
-#     success_url = reverse_lazy('workingtime:employee_lst')
+class EmployeeDelete(DeleteView):
+    model = Employee
+    template_name = 'workingtime/employee_confirm_delete.html'
+    success_url = reverse_lazy('workingtime:employee_lst')
 
 
 class TimesheetsFilteredFilterView(FilterView, SingleTableView):
