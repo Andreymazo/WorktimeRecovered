@@ -1,15 +1,15 @@
 from django.urls import path
 from worktime.apps import WorktimeConfig
 # from worktime.filters import FilteredCustomUserListView, FilteredEmployeeListView
-# from worktime.formset import CustomuserCreateWithEmployee, CustomuserUpdateWithEmployee
+from worktime.formset import CustomuserCreateWithEmployee, CustomuserUpdateWithEmployee
 # from worktime.models import CustomUser, CustomUserTable
-from worktime.views import CustomUserList, CustomLoginView
+from worktime.views import CustomUserList, CustomLoginView, EmploeeTableView, TimesheetsFilteredFilterView, TimesheetLst
 #, 
 # # \
-#     EmployeeDetail, EmployeeDelete, TimesheetLst, EmployeeUpdate, EmployeeCreate, \
-#     EmploeeTableView, CustomUserLst, TimesheetsCreateView, TimesheetsUpdateView, TimesheetsDetailView, \
+#     EmployeeDetail, EmployeeDelete, EmployeeUpdate, EmployeeCreate, \
+#     , CustomUserLst, TimesheetsCreateView, TimesheetsUpdateView, TimesheetsDetailView, \
 #     TimesheetsDeleteView, WorkTimeListView, WorkTimeCreateView, WorkTimeUpdateView, WorkTimeDetailView, \
-#     WorktimeDeleteView, , EmployeeTableView, TimesheetsFilteredFilterView
+#     WorktimeDeleteView, , EmployeeTableView
 
 app_name = WorktimeConfig.name
 
@@ -19,9 +19,9 @@ urlpatterns = [
 
     path('customuser_lst2/', CustomUserList.as_view(), name='customuser_lst2'),
     # path('customuser_lst/', FilteredCustomUserListView.as_view(), name='customuser_lst'),
-    # path('customuser_create/', CustomuserCreateWithEmployee.as_view(), name='customuser_create'),
+    path('customuser_create/', CustomuserCreateWithEmployee.as_view(), name='customuser_create'),
     # path('customuser_update/<int:pk>', CustomuserUpdateWithEmployee.as_view(), name='customuser_update'),
-    # path('employee_self/', EmploeeTableView.as_view(template_name="workingtime/employee_list.html"), name='employee_self'),
+    path('employee_self/', EmploeeTableView.as_view(template_name="workingtime/employee_list.html"), name='employee_self'),
     # #то же самое, что и выше, только нет фильтрации на селфюзера-работка, будет виден список всем пользователям
     # # path('employee_lst/', EmployeeTableView.as_view(template_name="workingtime/employee_list2.html"), name='employee_lst'),
     # path('employee_lst_filtered/', FilteredEmployeeListView.as_view(template_name="workingtime/employee_lst_filtered.html"), name='employee_lst_filtered'),
@@ -33,8 +33,8 @@ urlpatterns = [
     # path('employee_delete/<int:pk>', EmployeeDelete.as_view(template_name='workingtime/employee_confirm_delete.html'), name='employee_delete'),
 
     # # path('customuser_lst/', CustomUserLst.as_view(table_class = CustomUserTable, model=CustomUser, template_name ='workingtime/customuser_list.html', table_pagination={ "per_page":5 } ) , name='filtered_customuser_lst'),
-    # path('timesheet_get_self_time/', TimesheetLst.as_view(), name='timesheet_lst_self_time'),
-    # path('timesheet/', TimesheetsFilteredFilterView.as_view(template_name="workingtime/timesheet.html"), name='timesheet'),
+    path('timesheet_get_self_time/', TimesheetLst.as_view(), name='timesheet_lst_self_time'),
+    path('timesheet/', TimesheetsFilteredFilterView.as_view(template_name="workingtime/timesheet.html"), name='timesheet'),
     # path('timesheet_create/', TimesheetsCreateView.as_view(template_name="workingtime/timesheet_form.html"), name='timesheet_create'),
     # path('timesheet_update/<int:pk>', TimesheetsUpdateView.as_view(template_name="workingtime/timesheet_form.html"), name='timesheet_update'),
     # path('timesheet_detail/<int:pk>', TimesheetsDetailView.as_view(template_name="workingtime/timesheet_form.html"), name='timesheet_detail'),

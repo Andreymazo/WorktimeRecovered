@@ -85,9 +85,9 @@ from worktime.models import CustomUser, Employee
 class CustomuserCreateWithEmployee(PermissionRequiredMixin, CreateView):  #
     model = CustomUser
     form_class = CustomUserForm
-    template_name = 'workingtime/customuser_with_employee.html'
-    success_url = reverse_lazy('workingtime:customuser_lst')
-    permission_required = ["workingtime.add_customuser", "workingtime.view_customuser"]
+    template_name = 'worktime/customuser_with_employee.html'
+    success_url = reverse_lazy('worktime:customuser_lst')
+    permission_required = ["worktime.add_customuser", "worktime.view_customuser"]
 
     # def get_queryset(self, *args, **kwargs):
     #     lst_employees_emails = [i.customuser.email for i in Employee.objects.all()]

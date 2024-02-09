@@ -81,19 +81,19 @@ class FilteredEmployeeListView(SingleTableMixin, FilterView):
     queryset = Employee.objects.all()
 
 
-# class TimesheetFilter(FilterSet):
-    
-    # class Meta:
-        # model = Timesheet
-        # fields = {"email": ["exact", "contains"], "full_name": ["exact"]}
+class TimesheetFilter(FilterSet):
+    model = Timesheet
+    fields = {"email": ["exact", "contains"], "full_name": ["exact"]}
+    class Meta:
+        
         # fields = {
-            # "datetime_complete": ["icontains"],
-            # "datetime_start": ["icontains"],
-            # "id": ["exact"],
-            # "employee": ["icontains"],
-            # "cod_grupo_asignatura": ["exact"],
+        #     "datetime_complete": ["icontains"],
+        #     "datetime_start": ["icontains"],
+        #     "id": ["exact"],
+        #     "employee": ["icontains"],
+        #     "cod_grupo_asignatura": ["exact"],
         # }
-        # order_by = ["name"]
+        order_by = ["full_name"]
         ########################################################################
     # employee = django_filters.CharFilter(lookup_expr='icontains')
     # @property
@@ -115,20 +115,20 @@ class FilteredEmployeeListView(SingleTableMixin, FilterView):
     #     qs = super(TimesheetFilter, self).qs
     #     return qs.aggregate(Sum(F('worktime__start_break_safe_sheets') - F('worktime__start_break_safe_sheets')))
 
-    class Meta:
-        model = Timesheet
-        # fields = {"email": ["exact", "contains"], "full_name": ["exact"]}
-        fields = {
-            #     # "nombre_estudio": ["icontains"],
-            #     # "nombre_centro": ["icontains"],
-            "id": ["gt"],
-            # "worktime__status_work_wt":["exact"], "employee":["exact"]#, "worktime__time_break_safe_sheets":["range"]
-            #
-            #     "employee":["exact"], "date":["contains"], "worktime__status_work_wt":
-            #
-            #     # "nombre_asignatura": ["icontains"],
-            #     # "cod_grupo_asignatura": ["exact"],
-        }
-        order_by = ["id"]
+    # class Meta:
+    #     model = Timesheet
+    #     # fields = {"email": ["exact", "contains"], "full_name": ["exact"]}
+    #     fields = {
+    #         #     # "nombre_estudio": ["icontains"],
+    #         #     # "nombre_centro": ["icontains"],
+    #         "id": ["gt"],
+    #         # "worktime__status_work_wt":["exact"], "employee":["exact"]#, "worktime__time_break_safe_sheets":["range"]
+    #         #
+    #         #     "employee":["exact"], "date":["contains"], "worktime__status_work_wt":
+    #         #
+    #         #     # "nombre_asignatura": ["icontains"],
+    #         #     # "cod_grupo_asignatura": ["exact"],
+    #     }
+    #     order_by = ["id"]
 
         # fields = ['employee', 'date', 'worktime__status_work_wt', 'id'] #, "worktime__work_safe_sheets":["lt"]

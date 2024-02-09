@@ -1,4 +1,4 @@
- {% include 'workingtime/includes/main_menu.html' %}
+ {% include 'worktime/includes/main_menu.html' %}
 {# tutorial/templates/tutorial/people.html #}
 {% load render_table from django_tables2 %}
 {% load bootstrap3 %}
@@ -41,7 +41,7 @@
 
                     <td>
 
-                            <a class="btn.btn-default" href="{% url 'workingtime:customuser_create' %}" >Create</a>
+                            <a class="btn.btn-default" href="{% url 'worktime:customuser_create' %}" >Create</a>
 
                     </td>
                 </tr>
@@ -50,7 +50,7 @@
 
     {% for item in object_list %}
 
-    <a href="{% url 'workingtime:customuser_create' %}" type="submit" class="btn"><button>{{ item.id }} {{item.name}}</button></a>
+    <a href="{% url 'worktime:customuser_create' %}" type="submit" class="btn"><button>{{ item.id }} {{item.name}}</button></a>
 
     {% endfor %}
         {% render_table object_list %}

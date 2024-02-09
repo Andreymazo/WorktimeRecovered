@@ -2,7 +2,7 @@ from datetime import timedelta
 
 from django.core.management import BaseCommand
 
-from workingtime.models import CustomUser, Employee, Employer, Timesheet
+from worktime.models import CustomUser, Employee, Employer, Timesheet
 
 
 # from users.models import CustomUser

@@ -158,7 +158,7 @@ EMAIL_USE_SSL = False
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 LOGIN_URL = "worktime:login"
-LOGIN_REDIRECT_URL = "worktime:employee_self"
+LOGIN_REDIRECT_URL = "worktime:customuser_lst2"
 
 AUTH_USER_MODEL = 'worktime.CustomUser'
 
