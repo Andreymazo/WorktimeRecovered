@@ -22,7 +22,7 @@ class EmployerForm(forms.ModelForm):
 
     class Meta:
         model = Employer
-        fields = ['name']
+        fields = ['name', 'customuser']
 
 
 class EmployeeForm(forms.ModelForm):

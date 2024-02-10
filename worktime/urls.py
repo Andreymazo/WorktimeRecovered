@@ -3,7 +3,7 @@ from worktime.apps import WorktimeConfig
 from worktime.filters import  FilteredEmployeeListView
 from worktime.formset import CustomuserCreateWithEmployee, CustomuserCreateWithEmployer, CustomuserUpdateWithEmployee
 # from worktime.models import CustomUser, CustomUserTable
-from worktime.views import CustomUserList, CustomLoginView, EmployerDetail, EmployerFilteredListView,FilteredCustomUserListView, EmploeeTableView,  TimesheetsFilteredFilterView, TimesheetLst, EmployeeDelete
+from worktime.views import CustomUserList, CustomLoginView, CustomuserCreateWithDoubleForm, EmployerDetail, EmployerFilteredListView,FilteredCustomUserListView, EmploeeTableView,  TimesheetsFilteredFilterView, TimesheetLst, EmployeeDelete
 #, EmployerCreate,
 # # \
 #     EmployeeDetail, EmployeeUpdate, EmployeeCreate, \
@@ -22,11 +22,13 @@ urlpatterns = [
     # path('customuser_lst/', CustomUserLst.as_view(table_class = CustomUserTable, model=CustomUser, template_name ='workingtime/customuser_list.html', table_pagination={ "per_page":5 } ) , name='filtered_customuser_lst'),
     path('customuser_create/', CustomuserCreateWithEmployee.as_view(), name='customuser_create'),
 
-    # path('customuser_update/<int:pk>', CustomuserUpdateWithEmployee.as_view(), name='customuser_update'),
+    path('customuser_update/<int:pk>', CustomuserUpdateWithEmployee.as_view(), name='customuser_update'),
     
 
     path('employer_filtered_list/', EmployerFilteredListView.as_view(), name='employer_filtered_list'),
     path('employer_create/', CustomuserCreateWithEmployer.as_view(template_name="worktime/employer_form.html"), name='employer_create'),
+    # https://www.joshuakehn.com/2013/7/18/multiple-django-forms-in-one-form.html
+    path('employer_create_with_double_form/', CustomuserCreateWithDoubleForm, name='employer_create_with_double_form'),#.as_view(template_name="worktime/employer_form.html"), name='employer_create_with_include'
     path('employer_detail/<int:pk>', EmployerDetail.as_view(template_name="workingtime/employer_detail.html"), name='employer_detail'),
 
     path('employee_self/', EmploeeTableView.as_view(template_name="workingtime/employee_list.html"), name='employee_self'),

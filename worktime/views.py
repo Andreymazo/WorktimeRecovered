@@ -22,6 +22,7 @@ from worktime.forms import MyAuthForm, CustomUserForm, TimesheetForm, EmployerFo
 #, WorkTimeForm, EmployeeForm, 
 
 from worktime.models import CustomUser, CustomUserTable, EmployeeTable, Employee, EmployerTable, Timesheet, TimesheetTable, Employer
+from django.contrib.auth import get_user_model
 # , \
     #  WorkTime, WorkTimeTable
 #, CustomUserTable,
@@ -96,15 +97,13 @@ class EmployerFilteredListView(SingleTableMixin, FilterView):
     def get_queryset(self):
         queryset = Employer.objects.all()
         lst_employers_emails = [i.customuser.email for i in Employer.objects.all()]
-        # print('===============', lst_employers_emails)
         if not self.request.user.is_authenticated:
             login_url = reverse_lazy('worktime:login')
             return redirect(login_url)
-        if self.request.user.email in lst_employers_emails:
+        if self.request.user.email in lst_employers_emails and self.request.user.employer:#Если пользователь - работодатель и у него есть хотя бы 1 работник
             self_req_employer_id = CustomUser.objects.get(email=self.request.user.email)
-            queryset = Employer.objects.filter(id=self_req_employer_id.employee.id)
+            queryset = Employer.objects.filter(id=self_req_employer_id.employer.id)
             return queryset
-        
         else:
             return queryset
         
@@ -113,12 +112,40 @@ class EmployerFilteredListView(SingleTableMixin, FilterView):
 #     form_class = EmployerForm
 #     success_url = reverse_lazy('worktime:employer_lst')
 
+def CustomuserCreateWithDoubleForm(requiest):# Функция создания работодателя с полями кастомюзера, чтобы не мудрить с формсетами, проще
+        
+        if requiest.method == "POST":
+            custom_user_form = CustomUserForm(requiest.POST)
+            employer_form = EmployerForm(requiest.POST)
+            if custom_user_form.is_valid() and employer_form.is_valid():
+                
+                email=custom_user_form.cleaned_data.get("email")
+                # email=custom_user_form.cleaned_data.get('email')
+                full_name = custom_user_form.cleaned_data.get("full_name")
+                data_custom_user = CustomUser(email=email,full_name=full_name)
+                data_custom_user.save()
 
+                name=employer_form.cleaned_data.get("name")
+                customuser=employer_form.cleaned_data.get("customuser")
+                data_employer=Employer(name=name, customuser=customuser)
+                data_employer.save()
+                print('============================================================')
+                return HttpResponseRedirect(reverse('worktime:employer_filtered_list') )
+        else:
+            
+            custom_user_form = CustomUserForm()
+            employer_form = EmployerForm()   
+
+        return render(requiest, 'worktime/templates/worktime/customuser_with_employer.html', {"custom_user_form":custom_user_form, "employer_form":employer_form})
+        
+        
 
 class EmployerDetail(DetailView):
     model = Employer
     template_name = 'worktime/employer_detail.html'
     # form_class = EmployerForm
+
+
 
 class EmploeeTableView(SingleTableView):
     table_class = EmployeeTable

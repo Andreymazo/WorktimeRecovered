@@ -33,7 +33,7 @@
                     <td>{{object.customuser}}</td>
 
                     <td>
-                        <a class="btn.btn-default" href="{% url 'worktime:customuser_create' object.pk %}" >Update</a>
+                        <a class="btn.btn-default" href="{% url 'worktime:customuser_update' object.pk %}" >Update</a>
                             <a class="btn.btn-default" href="{% url 'worktime:customuser_create' %}" >Create</a>
                             <a class="btn.btn-default" href="{% url 'worktime:employee_delete' object.pk %}" >Delete</a>
                     </td>
