@@ -21,9 +21,7 @@ urlpatterns = [
     path('customuser_lst/', FilteredCustomUserListView.as_view(), name='customuser_lst'),
     # path('customuser_lst/', CustomUserLst.as_view(table_class = CustomUserTable, model=CustomUser, template_name ='workingtime/customuser_list.html', table_pagination={ "per_page":5 } ) , name='filtered_customuser_lst'),
     path('customuser_create/', CustomuserCreateWithEmployee.as_view(), name='customuser_create'),
-
     path('customuser_update/<int:pk>', CustomuserUpdateWithEmployee.as_view(), name='customuser_update'),
-    
 
     path('employer_filtered_list/', EmployerFilteredListView.as_view(), name='employer_filtered_list'),
     path('employer_create/', CustomuserCreateWithEmployer.as_view(template_name="worktime/employer_form.html"), name='employer_create'),
