@@ -1,3 +1,4 @@
+from gettext import translation
 from bootstrap_datepicker_plus.widgets import DatePickerInput
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
@@ -22,7 +23,7 @@ class EmployerForm(forms.ModelForm):
 
     class Meta:
         model = Employer
-        fields = ['name', 'customuser']
+        fields = ['name']
 
 
 class EmployeeForm(forms.ModelForm):
@@ -42,6 +43,7 @@ EmployeeFormSet = inlineformset_factory(CustomUser, Employee, form=CustomUserFor
                                         formset=EmployeeForm,
                                         extra=1, max_num=20, can_delete=False)
 
+    
 
 class TimesheetForm(forms.ModelForm):
     datetime_start = DateTimeField(

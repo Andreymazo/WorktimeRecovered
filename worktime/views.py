@@ -118,18 +118,16 @@ def CustomuserCreateWithDoubleForm(requiest):# Функция создания �
             custom_user_form = CustomUserForm(requiest.POST)
             employer_form = EmployerForm(requiest.POST)
             if custom_user_form.is_valid() and employer_form.is_valid():
-                
                 email=custom_user_form.cleaned_data.get("email")
                 # email=custom_user_form.cleaned_data.get('email')
                 full_name = custom_user_form.cleaned_data.get("full_name")
                 data_custom_user = CustomUser(email=email,full_name=full_name)
                 data_custom_user.save()
-
+                id = CustomUser.objects.get(id = data_custom_user.id)
+                print(id)
                 name=employer_form.cleaned_data.get("name")
-                customuser=employer_form.cleaned_data.get("customuser")
-                data_employer=Employer(name=name, customuser=customuser)
+                data_employer=Employer(name=name, customuser=id)
                 data_employer.save()
-                print('============================================================')
                 return HttpResponseRedirect(reverse('worktime:employer_filtered_list') )
         else:
             
@@ -138,7 +136,76 @@ def CustomuserCreateWithDoubleForm(requiest):# Функция создания �
 
         return render(requiest, 'worktime/templates/worktime/customuser_with_employer.html', {"custom_user_form":custom_user_form, "employer_form":employer_form})
         
-        
+
+# class CompanyForm(ModelForm):
+#     class Meta:
+#         model = Company
+#         fields = ("name", "description" )
+
+
+# class BikeForm(ModelForm):
+#     name_bike = forms.CharField(required=True)
+#     model = forms.CharField(required=True)
+
+#     class Meta(CompanyForm.Meta):
+#         model = Company
+
+#     @transaction.atomic
+#     def save(self):
+#         company = super().save(commit=False)
+#         company.name = self.cleaned_data.get("name")
+#         company.description = self.cleaned_data.get("description")
+#         company.save()
+#         bike = Bike.objects.create(to_company=company)
+#         bike.name_bike = self.cleaned_data.get("name_bike")
+#         bike.model = self.cleaned_data.get("model")
+#         bike.save()
+#         return company
+
+# def registerPage(request):
+#     if request.method == 'POST':
+#         form = createUserForm(request.POST)
+#         profile_form = profileForm(request.POST)
+
+#         if form.is_valid() and profile_form.is_valid():
+#             user = form.save()
+
+#             #we don't save the profile_form here because we have to first get the value of profile_form, assign the user to the OneToOneField created in models before we now save the profile_form. 
+
+#             profile = profile_form.save(commit=False)
+#             profile.user = user
+
+#             profile.save()
+
+#             messages.success(request,  'Your account has been successfully created')
+
+#             return redirect('login')
+
+#     context = {'form': form, 'profile_form': profile_form}
+#     return render(request, 'app_name/register.html', context)
+
+
+# def profile_update_view(request, pk):
+
+#     user = request.user
+#     user_form = UserUpdateForm(request.POST or None, instance=request.user)
+
+#     user_profile_form = UserProfileUpdateForm(request.POST or None, instance=request.user.profile)
+
+#     if request.method == 'POST':
+#         if user_form.is_valid() and user_profile_form.is_valid():
+
+#             user.save()
+#             user.profile.save()
+
+#             return redirect('profile_view', user.profile.id)
+
+#     context = {
+#         'user_form': user_form,
+#         'user_profile_form': user_profile_form
+#     }
+
+#     return render(request, 'user_profile_update_view.html', context)
 
 class EmployerDetail(DetailView):
     model = Employer
