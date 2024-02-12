@@ -30,8 +30,9 @@ Users: Emploers and Emploees. Emploee starts work day - push the bttn, stop work
 
 
 
-1. Create Eployer at employer_create_with_double_form/ (with 2 forms), employer_create/ (with formset), 
-2. Create Eployee at employee_create_with_doubleform/ (with 2 forms).
+1. Use command files to initial base filling: For ex. _python3 manage.py create_super_user_ will be enough to start.
+2. Create Eployer at employer_create_with_double_form/ (with 2 forms), employer_create/ (with formset), 
+3. Create Eployee at employee_create_with_doubleform/ (with 2 forms).
 To keep everything in order for each creating endpoint to make self form. For ex. endpoint: "employer_create_with_double_form/" uses _CustomUserDoubleform_, _EmployerDoubleformWithourCustomuser_. Thus we have clear fields at every end point
 
 Andrey Mazo (+79219507391)
