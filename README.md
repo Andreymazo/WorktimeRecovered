@@ -4,17 +4,17 @@
 Работник приходит на работу нажимает на кнопку - начало рабочего дня, нажимает на кнопку - приостановка, нажимает на кнопку - продолжение, в конце нажимает на кнопку - конец рабочего дня. В базу заносится рабочее время.
 Users: Emploers and Emploees. Emploee starts work day - push the bttn, stop work day - push the bttn, resumes to work - push the bttn, end day work - push the bttn. Worktime --> Base.
 - Django project with forms. 
-Install deps:
+    Install deps:
 
-```cmd
-pip install -r requirements.txt
-```
+    ```cmd
+    pip install -r requirements.txt
+    ```
 
-Start dev server:
+    Start dev server:
 
-```cmd
-python3 manage.py runserver
-```
+    ```cmd
+    python3 manage.py runserver
+    ```
 
 
 1. Create Eployer at employer_create_with_double_form/ (with 2 forms), employer_create/ (with formset), 
