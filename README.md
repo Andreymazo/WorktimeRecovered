@@ -3,6 +3,7 @@
 Пользователи: Работники и Менеджеры.
 Работник приходит на работу нажимает на кнопку - начало рабочего дня, нажимает на кнопку - приостановка, нажимает на кнопку - продолжение, в конце нажимает на кнопку - конец рабочего дня. В базу заносится рабочее время.
 ____________________________
+This project was done in 10 day about a half a year ago. Then .env was lost, and the project was layed on a shelve. Now I deside to recover it with no hurry, step by step.
 
 Users: Emploers and Emploees. Emploee starts work day - push the bttn, stop work day - push the bttn, resumes to work - push the bttn, end day work - push the bttn. Worktime --> Base. Postgres is here. If you dont have PyCharm (proffesional) then try dbeaver - best choice.
 
