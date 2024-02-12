@@ -18,13 +18,13 @@ from pip._internal.utils._jaraco_text import _
 
 from config import settings
 from worktime.filters import CustomUserFilter, TimesheetFilter
-from worktime.forms import CustomUserDoubleform, EmployeeDoubleForm, EmployeeForm, EmployerDoubleformWithourCustomuser, EmployerFormDoubleform, MyAuthForm, CustomUserForm, TimesheetForm, EmployerForm
-#, WorkTimeForm, EmployeeForm, 
+from worktime.forms import CustomUserDoubleform, EmployeeDoubleForm, EmployeeForm\
+    , EmployerDoubleformWithourCustomuser, EmployerFormDoubleform, MyAuthForm, CustomUserForm, TimesheetForm, EmployerForm, WorkTimeForm
+# EmployeeForm, 
 
-from worktime.models import CustomUser, CustomUserTable, EmployeeTable, Employee, EmployerTable, Timesheet, TimesheetTable, Employer
+from worktime.models import CustomUser, CustomUserTable, EmployeeTable, Employee, EmployerTable, Timesheet\
+    , TimesheetTable, Employer, WorkTime, WorkTimeTable
 from django.contrib.auth import get_user_model
-# , \
-    #  WorkTime, WorkTimeTable
 #, CustomUserTable,
 
 
@@ -613,95 +613,95 @@ class TimesheetLst(ListView):
 # # return context
 # ############################################################################
 
-# class TimesheetsCreateView(CreateView):
-#     model = Timesheet
-#     form_class = TimesheetForm
-#     template_name = 'workingtime/timesheet_form.html'
+class TimesheetsCreateView(CreateView):
+    model = Timesheet
+    form_class = TimesheetForm
+    template_name = 'worktime/timesheet_form.html'
 
-#     def get_success_url(self):
-#         return reverse_lazy('workingtime:timesheet_update', kwargs={'pk': self.object.pk})
-
-
-# class TimesheetsUpdateView(UpdateView):
-#     model = Timesheet
-#     form_class = TimesheetForm
-#     success_url = reverse_lazy('workingtime:timesheet_update')
-#     template_name = 'workingtime/timesheet_form.html'
-
-#     def get_success_url(self):
-#         return reverse_lazy('workingtime:timesheet_update', kwargs={'pk': self.object.pk})
+    def get_success_url(self):
+        return reverse_lazy('worktime:timesheet_update', kwargs={'pk': self.object.pk})
 
 
-# class TimesheetsDetailView(SingleTableMixin, FilterView, DetailView):
-#     table_class = TimesheetTable
-#     model = Timesheet
-#     form_class = TimesheetForm
-#     success_url = reverse_lazy('workingtime:timesheet_lst_self_time')
-#     template_name = 'workingtime/timesheet_detail.html'
-#     filterset_class = TimesheetFilter
+class TimesheetsUpdateView(UpdateView):
+    model = Timesheet
+    form_class = TimesheetForm
+    success_url = reverse_lazy('workingtime:timesheet_update')
+    template_name = 'worktime/timesheet_form.html'
 
-#     def get(self, request, *args, **kwargs):
-#         self.object = self.get_object()
-#         self_req_timesheet_id = Timesheet.objects.get(id=self.object.pk)
-#         self_name = self_req_timesheet_id.employee.name
-#         context = {
-#             'object_list': self_req_timesheet_id,  # self.get_context_data(object=self.object),
-#             'self_name': self_name
-#         }
-#         return render(request, "workingtime/timesheet_detail.html", context)
+    def get_success_url(self):
+        return reverse_lazy('worktime:timesheet_update', kwargs={'pk': self.object.pk})
 
 
-# class TimesheetsDeleteView(DeleteView):
-#     queryset = Timesheet.objects.all()
-#     form_class = TimesheetForm
-#     success_url = reverse_lazy('workingtime:timesheet_lst_self_time')
-#     template_name = 'workingtime/timesheet_confirm_delete.html'
+class TimesheetsDetailView(SingleTableMixin, FilterView, DetailView):
+    table_class = TimesheetTable
+    model = Timesheet
+    form_class = TimesheetForm
+    success_url = reverse_lazy('worktime:timesheet_lst_self_time')
+    template_name = 'worktime/timesheet_detail.html'
+    filterset_class = TimesheetFilter
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self_req_timesheet_id = Timesheet.objects.get(id=self.object.pk)
+        self_name = self_req_timesheet_id.employee.name
+        context = {
+            'object_list': self_req_timesheet_id,  # self.get_context_data(object=self.object),
+            'self_name': self_name
+        }
+        return render(request, "worktime/timesheet_detail.html", context)
 
 
-# class WorkTimeListView(SingleTableView):
-#     table_class = WorkTimeTable
-#     queryset = WorkTime.objects.all()
-#     template_name = "workingtime/worktime_lst.html"
+class TimesheetsDeleteView(DeleteView):
+    queryset = Timesheet.objects.all()
+    form_class = TimesheetForm
+    success_url = reverse_lazy('worktime:timesheet_lst_self_time')
+    template_name = 'worktime/timesheet_confirm_delete.html'
 
 
-# class WorkTimeCreateView(CreateView):
-#     model = WorkTime
-#     form_class = WorkTimeForm
-#     template_name = 'workingtime/worktime_form.html'
-
-#     def get_success_url(self):
-#         return reverse_lazy('workingtime:worktime_update', kwargs={'pk': self.object.pk})
+class WorkTimeListView(SingleTableView):
+    table_class = WorkTimeTable
+    queryset = WorkTime.objects.all()
+    template_name = "worktime/worktime_lst.html"
 
 
-# class WorkTimeUpdateView(UpdateView):
-#     model = WorkTime
-#     form_class = WorkTimeForm
-#     success_url = reverse_lazy('workingtime:worktime_update')
-#     template_name = 'workingtime/worktime_form.html'
+class WorkTimeCreateView(CreateView):
+    model = WorkTime
+    form_class = WorkTimeForm
+    template_name = 'worktime/worktime_form.html'
 
-#     def get_success_url(self):
-#         return reverse_lazy('workingtime:worktime_update', kwargs={'pk': self.object.pk})
-
-
-# class WorkTimeDetailView(DetailView):
-#     model = WorkTime
-#     form_class = WorkTimeForm
-#     success_url = reverse_lazy('workingtime:timesheet_lst_self_time')
-#     template_name = 'workingtime/worktime_detail.html'
-
-#     def get(self, request, *args, **kwargs):
-#         self.object = self.get_object()
-#         context = {
-#             'object_list': self.get_context_data(object=self.object),
-#         }
-#         return render(request, "workingtime/worktime_detail.html", context)
+    def get_success_url(self):
+        return reverse_lazy('worktime:worktime_update', kwargs={'pk': self.object.pk})
 
 
-# class WorktimeDeleteView(DeleteView):
-#     queryset = WorkTime.objects.all()
-#     form_class = WorkTimeForm
-#     success_url = reverse_lazy('workingtime:timesheet_lst_self_time')
-#     template_name = 'workingtime/worktime_confirm_delete.html'
+class WorkTimeUpdateView(UpdateView):
+    model = WorkTime
+    form_class = WorkTimeForm
+    success_url = reverse_lazy('workingtime:worktime_update')
+    template_name = 'worktime/worktime_form.html'
+
+    def get_success_url(self):
+        return reverse_lazy('worktime:worktime_update', kwargs={'pk': self.object.pk})
+
+
+class WorkTimeDetailView(DetailView):
+    model = WorkTime
+    form_class = WorkTimeForm
+    success_url = reverse_lazy('workingtime:timesheet_lst_self_time')
+    template_name = 'workingtime/worktime_detail.html'
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        context = {
+            'object_list': self.get_context_data(object=self.object),
+        }
+        return render(request, "worktime/worktime_detail.html", context)
+
+
+class WorktimeDeleteView(DeleteView):
+    queryset = WorkTime.objects.all()
+    form_class = WorkTimeForm
+    success_url = reverse_lazy('worktime:timesheet_lst_self_time')
+    template_name = 'worktime/worktime_confirm_delete.html'
 
 
 ###############################
