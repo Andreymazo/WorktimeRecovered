@@ -1,9 +1,9 @@
-from django.urls import path
+from django.urls import include, path, re_path
 from worktime.apps import WorktimeConfig
 from worktime.filters import  FilteredEmployeeListView
 from worktime.formset import CustomuserCreateWithEmployee, CustomuserCreateWithEmployer, CustomuserUpdateWithEmployee
 # from worktime.models import CustomUser, CustomUserTable
-from worktime.views import CustomUserList, CustomLoginView, CustomuserCreateWithDoubleForm, EmployerDetail, EmployerFilteredListView,FilteredCustomUserListView, EmploeeTableView,  TimesheetsFilteredFilterView, TimesheetLst, EmployeeDelete
+from worktime.views import CustomUserList, CustomLoginView, CustomuserCreateWithDoubleForm, EmployeeCreateWithDoublform, EmployeeDetail, EmployerDetail, EmployerFilteredListView,FilteredCustomUserListView, EmploeeTableView,  TimesheetsFilteredFilterView, TimesheetLst, EmployeeDelete
 #, EmployerCreate,
 # # \
 #     EmployeeDetail, EmployeeUpdate, EmployeeCreate, \
@@ -29,14 +29,17 @@ urlpatterns = [
     path('employer_create_with_double_form/', CustomuserCreateWithDoubleForm, name='employer_create_with_double_form'),#.as_view(template_name="worktime/employer_form.html"), name='employer_create_with_include'
     path('employer_detail/<int:pk>', EmployerDetail.as_view(template_name="workingtime/employer_detail.html"), name='employer_detail'),
 
-    path('employee_self/', EmploeeTableView.as_view(template_name="workingtime/employee_list.html"), name='employee_self'),
+    path('employee_self/', EmploeeTableView.as_view(template_name="worktime/employee_list.html"), name='employee_self'),
+
+    path('employee_create_with_doubleform/', EmployeeCreateWithDoublform, name='employee_create_with_doubleform'),
+    
 
     # #то же самое, что и выше, только нет фильтрации на селфюзера-работка, будет виден список всем пользователям
     # # path('employee_lst/', EmployeeTableView.as_view(template_name="workingtime/employee_list2.html"), name='employee_lst'),
-    # path('employee_lst_filtered/', FilteredEmployeeListView.as_view(template_name="workingtime/employee_lst_filtered.html"), name='employee_lst_filtered'),
+    path('employee_lst_filtered/', FilteredEmployeeListView.as_view(template_name="worktime/employee_lst_filtered.html"), name='employee_lst_filtered'),
     # ##Либо кастомюзер create с Емплоии, либо просто Емплоии create. Одно комментируем.
     # # path('employee_create/', EmployeeCreate.as_view(template_name="workingtime/employee_form.html"), name='employee_create'),
-    # path('employee_detail/<int:pk>', EmployeeDetail.as_view(template_name="workingtime/employee_detail.html"), name='employee_detail'),
+    path('employee_detail/<int:pk>', EmployeeDetail.as_view(template_name="worktime/employee_detail.html"), name='employee_detail'),
     # #Либо кастомюзер апдейт с Емплоии, либо просто Емплоии апдейт. Одно комментируем.
     # # path('employee_update/<int:pk>', EmployeeUpdate.as_view(template_name="workingtime/employee_form.html"), name='employee_update'),
     path('employee_delete/<int:pk>', EmployeeDelete.as_view(template_name='workingtime/employee_confirm_delete.html'), name='employee_delete'),

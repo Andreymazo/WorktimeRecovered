@@ -18,7 +18,7 @@ from pip._internal.utils._jaraco_text import _
 
 from config import settings
 from worktime.filters import CustomUserFilter, TimesheetFilter
-from worktime.forms import MyAuthForm, CustomUserForm, TimesheetForm, EmployerForm
+from worktime.forms import CustomUserDoubleform, EmployeeDoubleForm, EmployeeForm, EmployerDoubleformWithourCustomuser, EmployerFormDoubleform, MyAuthForm, CustomUserForm, TimesheetForm, EmployerForm
 #, WorkTimeForm, EmployeeForm, 
 
 from worktime.models import CustomUser, CustomUserTable, EmployeeTable, Employee, EmployerTable, Timesheet, TimesheetTable, Employer
@@ -115,13 +115,12 @@ class EmployerFilteredListView(SingleTableMixin, FilterView):
 def CustomuserCreateWithDoubleForm(requiest):# Функция создания работодателя с полями кастомюзера, чтобы не мудрить с формсетами, проще
         
         if requiest.method == "POST":
-            custom_user_form = CustomUserForm(requiest.POST)
-            employer_form = EmployerForm(requiest.POST)
+            custom_user_form = CustomUserDoubleform(requiest.POST)
+            employer_form = EmployerDoubleformWithourCustomuser(requiest.POST)
             if custom_user_form.is_valid() and employer_form.is_valid():
                 email=custom_user_form.cleaned_data.get("email")
-                # email=custom_user_form.cleaned_data.get('email')
-                full_name = custom_user_form.cleaned_data.get("full_name")
-                data_custom_user = CustomUser(email=email,full_name=full_name)
+                # full_name = custom_user_form.cleaned_data.get("full_name")
+                data_custom_user = CustomUser(email=email)#,full_name=full_name
                 data_custom_user.save()
                 id = CustomUser.objects.get(id = data_custom_user.id)
                 print(id)
@@ -131,81 +130,11 @@ def CustomuserCreateWithDoubleForm(requiest):# Функция создания �
                 return HttpResponseRedirect(reverse('worktime:employer_filtered_list') )
         else:
             
-            custom_user_form = CustomUserForm()
-            employer_form = EmployerForm()   
+            custom_user_form = CustomUserDoubleform()
+            employer_form = EmployerDoubleformWithourCustomuser()   
 
         return render(requiest, 'worktime/templates/worktime/customuser_with_employer.html', {"custom_user_form":custom_user_form, "employer_form":employer_form})
-        
 
-# class CompanyForm(ModelForm):
-#     class Meta:
-#         model = Company
-#         fields = ("name", "description" )
-
-
-# class BikeForm(ModelForm):
-#     name_bike = forms.CharField(required=True)
-#     model = forms.CharField(required=True)
-
-#     class Meta(CompanyForm.Meta):
-#         model = Company
-
-#     @transaction.atomic
-#     def save(self):
-#         company = super().save(commit=False)
-#         company.name = self.cleaned_data.get("name")
-#         company.description = self.cleaned_data.get("description")
-#         company.save()
-#         bike = Bike.objects.create(to_company=company)
-#         bike.name_bike = self.cleaned_data.get("name_bike")
-#         bike.model = self.cleaned_data.get("model")
-#         bike.save()
-#         return company
-
-# def registerPage(request):
-#     if request.method == 'POST':
-#         form = createUserForm(request.POST)
-#         profile_form = profileForm(request.POST)
-
-#         if form.is_valid() and profile_form.is_valid():
-#             user = form.save()
-
-#             #we don't save the profile_form here because we have to first get the value of profile_form, assign the user to the OneToOneField created in models before we now save the profile_form. 
-
-#             profile = profile_form.save(commit=False)
-#             profile.user = user
-
-#             profile.save()
-
-#             messages.success(request,  'Your account has been successfully created')
-
-#             return redirect('login')
-
-#     context = {'form': form, 'profile_form': profile_form}
-#     return render(request, 'app_name/register.html', context)
-
-
-# def profile_update_view(request, pk):
-
-#     user = request.user
-#     user_form = UserUpdateForm(request.POST or None, instance=request.user)
-
-#     user_profile_form = UserProfileUpdateForm(request.POST or None, instance=request.user.profile)
-
-#     if request.method == 'POST':
-#         if user_form.is_valid() and user_profile_form.is_valid():
-
-#             user.save()
-#             user.profile.save()
-
-#             return redirect('profile_view', user.profile.id)
-
-#     context = {
-#         'user_form': user_form,
-#         'user_profile_form': user_profile_form
-#     }
-
-#     return render(request, 'user_profile_update_view.html', context)
 
 class EmployerDetail(DetailView):
     model = Employer
@@ -257,6 +186,63 @@ class EmploeeTableView(SingleTableView):
             return queryset
 
 
+def EmployeeCreateWithDoublform(requiest):
+   
+        if requiest.method == "POST":
+            custom_user_form = CustomUserDoubleform(requiest.POST)
+            # employer_form = EmployerFormDoubleform(requiest.POST)
+            employee_form = EmployeeDoubleForm(requiest.POST)
+            # if all[custom_user_form.is_valid(), employee_form.is_valid(), employee_form.is_valid()]:
+            if custom_user_form.is_valid() and employee_form.is_valid()  :#and employer_form.is_valid()
+                email=custom_user_form.cleaned_data.get("email")
+                # full_name = custom_user_form.cleaned_data.gset("full_name")
+                data_custom_user = CustomUser(email=email,)#full_name=full_name
+                data_custom_user.save()
+                customuser_id_int = int(CustomUser.objects.get(id = data_custom_user.id).id)#Присваевымый работнику id от CustomUser
+                customuser_id = CustomUser.objects.get(id = data_custom_user.id).id
+                customuser_id_ins = CustomUser.objects.get(id = data_custom_user.id)
+                # print('Присваевымый работнику id от Customusera)', customuser_id.id)
+                
+                # employer_id = employer_form.cleaned_data.get('id')
+                # data_employer = Employer(id=employer_id)
+                # data_employer.save()
+
+                # customuser = employer_form.cleaned_data.get('customuser')
+                # name_employer = employer_form.cleaned_data.get('name')
+                # customuser_id = employer_form.cleaned_data.get('customuser_id')
+                # data_employer = Employer(name=name_employer, customuser_id=customuser_id_int)
+                # data_employer.save()
+                # employer_id = data_employer.id 
+                # employer_id = Employer.objects.get(id = data_employer.id)#Присваеваеымый работнику id от Работодателя
+
+                # print('Присваевымый работнику id от Работодателя)', employer_id)                
+                
+                # employer_id = employer_form.cleaned_data.get('id')
+                
+                # employer_id = Employee.objects.get(id=Employee.objects.get(id=employer_form.cleaned_data.get('id')).employer.id)
+
+                # print('employer_id', type(employer_id), employer_id)
+                
+                
+                name_employee=employee_form.cleaned_data.get("name")
+                employer = employee_form.cleaned_data.get("employer")
+                data_employee=Employee(name=name_employee, customuser=customuser_id_ins, employer=employer)#
+                data_employee.save()
+
+                return HttpResponseRedirect(reverse('worktime:employee_lst_filtered') )
+        else:
+            
+            custom_user_form = CustomUserDoubleform()
+            # employer_form = EmployerFormDoubleform()   
+            employee_form = EmployeeDoubleForm()
+
+        return render(requiest, 'worktime/templates/worktime/employee_create_with_doublform.html', {"custom_user_form":
+        custom_user_form, "employee_form":employee_form})
+    # return (requiest, 'worktime/templates/worktime/customuser_create_with_include.html', context)
+
+
+
+
 #     delete = LinkColumn('workingtime:home', args=[A('pk')], attrs={
 #         'a': {'class': 'btn'}
 #     })
@@ -300,51 +286,51 @@ from django.db.models import DurationField, ExpressionWrapper, F, IntegerField, 
 #     success_url = reverse_lazy('workingtime:employee_lst')
 
 
-# class EmployeeDetail(DetailView):
-#     model = Employee
-#     # template_name = 'workingtime/employee_detail.html'
-#     template_name = 'workingtime/employee_detail.html'
-#     # form_class = EmployeeForm
+class EmployeeDetail(DetailView):
+    model = Employee
+    # template_name = 'workingtime/employee_detail.html'
+    template_name = 'workingtime/employee_detail.html'
+    # form_class = EmployeeForm
 
-#     #Сейчас другеи поля считают в таймшите и в worktime
-#     def get(self, request, *args, **kwargs):
-#         self.object = self.get_object()
-#         # total_time = Timesheet.objects.annotate(
-#         #     total_time=ExpressionWrapper(
-#         #         ExpressionWrapper(F('out') - F('entry'), output_field=IntegerField()) -
-#         #         ExpressionWrapper(F('lunch_end') - F('lunch'), output_field=IntegerField()),
-#         #         output_field=DurationField()
-#         #     )
-#         # )
+    #Сейчас другеи поля считают в таймшите и в worktime
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        # total_time = Timesheet.objects.annotate(
+        #     total_time=ExpressionWrapper(
+        #         ExpressionWrapper(F('out') - F('entry'), output_field=IntegerField()) -
+        #         ExpressionWrapper(F('lunch_end') - F('lunch'), output_field=IntegerField()),
+        #         output_field=DurationField()
+        #     )
+        # )
 
-#         # general_total_time = Timesheet.objects.aggregate(
-#         #     general_total_time=Sum(
-#         #         ExpressionWrapper(F('out') - F('entry'), output_field=IntegerField()) -
-#         #         ExpressionWrapper(F('lunch_end') - F('lunch'), output_field=IntegerField()),
-#         #         output_field=DurationField()
-#         #     )
-#         # )
+        # general_total_time = Timesheet.objects.aggregate(
+        #     general_total_time=Sum(
+        #         ExpressionWrapper(F('out') - F('entry'), output_field=IntegerField()) -
+        #         ExpressionWrapper(F('lunch_end') - F('lunch'), output_field=IntegerField()),
+        #         output_field=DurationField()
+        #     )
+        # )
         
-#         # c = Employee.objects.all().get(employer=Employer.objects.get(name='Вася'))
-#         self_req_employee_id = CustomUser.objects.get(email=self.request.user.email)
-#         print('===================+++++++++++++++++++++++get_object().id', self.get_object().id)
-#         #Если заходит админ, то у него нет сущности employee, либо коммент оставить, либо обработать
-#         # print(self_req_employee_id.employee.id)
-#         # c = Timesheet.objects.all().filter(employee_id=self_req_employee_id.employee.id)
-#         c = Employee.objects.all().get(id=self.get_object().id)
-#         data =  Employee.objects.all()
-#         total_time = Timesheet.objects.aggregate(Sum('worktime__time_worked_per_day'))
-#         context = {'c': c,
-#                    'cc':data,
-#                    'total_time': total_time['worktime__time_worked_per_day__sum'],}
-#                 #    'general_total_time': general_total_time['general_total_time']}
-#         # context = self.get_context_data()
-#         # return self.render_to_response(context)
+        # c = Employee.objects.all().get(employer=Employer.objects.get(name='Вася'))
+        self_req_employee_id = CustomUser.objects.get(email=self.request.user.email)
+        print('===================+++++++++++++++++++++++get_object().id', self.get_object().id)
+        #Если заходит админ, то у него нет сущности employee, либо коммент оставить, либо обработать
+        # print(self_req_employee_id.employee.id)
+        # c = Timesheet.objects.all().filter(employee_id=self_req_employee_id.employee.id)
+        c = Employee.objects.all().get(id=self.get_object().id)
+        data =  Employee.objects.all()
+        total_time = Timesheet.objects.aggregate(Sum('worktime__time_worked_per_day'))
+        context = {'c': c,
+                   'cc':data,
+                   'total_time': total_time['worktime__time_worked_per_day__sum'],}
+                #    'general_total_time': general_total_time['general_total_time']}
+        # context = self.get_context_data()
+        # return self.render_to_response(context)
 
-#         context['table'] = data
-#         return self.render_to_response(context)
-#         # return super(EmployeeDetail, self).get(request, *args, **kwargs)
-#         # return self.render_to_response(context)#"workingtime/employee_detail.html",
+        context['table'] = data
+        return self.render_to_response(context)
+        # return super(EmployeeDetail, self).get(request, *args, **kwargs)
+        # return self.render_to_response(context)#"workingtime/employee_detail.html",
 
 
 class EmployeeDelete(DeleteView):

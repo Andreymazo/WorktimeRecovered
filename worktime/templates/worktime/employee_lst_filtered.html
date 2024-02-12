@@ -1,5 +1,5 @@
 {% load bootstrap3 %}
-{% include 'workingtime/includes/main_menu.html' %}
+{% include 'worktime/includes/main_menu.html' %}
 {# tutorial/templates/tutorial/people.html #}
  {% load render_table from django_tables2 %}
 {% if filter %}
@@ -31,16 +31,16 @@
                 <tr>
 
 
-                    <a class="btn btn-outline-light w-50" href="{% url 'workingtime:employee_detail' object.pk %}"></a>
+                    <a class="btn btn-outline-light w-50" href="{% url 'worktime:employee_detail' object.pk %}"></a>
                     <td>{{object.id}}</td>
                     <td> {{ object.name }} </td>
                     <td>{{object.engaged}}</td>
                     <td>{{object.employer}}</td>
 
                     <td>
-                        <a class="btn.btn-default" href="{% url 'workingtime:customuser_update' object.pk %}" >Update</a>
-                            <a class="btn.btn-default" href="{% url 'workingtime:customuser_create' %}" >Create</a>
-                            <a class="btn.btn-default" href="{% url 'workingtime:employee_delete' object.pk %}" >Delete</a>
+                        <a class="btn.btn-default" href="{% url 'worktime:customuser_update' object.pk %}" >Update</a>
+                            <a class="btn.btn-default" href="{% url 'worktime:customuser_create' %}" >Create</a>
+                            <a class="btn.btn-default" href="{% url 'worktime:employee_delete' object.pk %}" >Delete</a>
                     </td>
                 </tr>
         {% endfor %}
@@ -48,7 +48,7 @@
 
     {% for item in object_list %}
 
-    <a href="{% url 'workingtime:employee_delete' item.pk %}" type="submit" class="btn"><button>{{ item.id }} {{item.name}}</button></a>
+    <a href="{% url 'worktime:employee_delete' item.pk %}" type="submit" class="btn"><button>{{ item.id }} {{item.name}}</button></a>
 
     {% endfor %}
         {% render_table object_list %}

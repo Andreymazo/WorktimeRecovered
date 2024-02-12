@@ -23,20 +23,42 @@ class EmployerForm(forms.ModelForm):
 
     class Meta:
         model = Employer
-        fields = ['name']
+        fields = ['name', 'customuser']
+        
+class EmployerFormDoubleform(forms.ModelForm):
 
+    class Meta:
+        model = Employer
+        fields = ['id', 'customuser']
 
 class EmployeeForm(forms.ModelForm):
     class Meta:
         model = Employee
         fields = '__all__'
-        # engaged = DateTimeField()
+
+class EmployerDoubleformWithourCustomuser(forms.ModelForm):# Форма для создания Employer с 2мя формами, во вьюхе ф.CustomuserCreateWithDoubleForm
+
+    class Meta:
+        model = Employer
+        fields = ['name']
+
+class EmployeeDoubleForm(forms.ModelForm):
+    class Meta:
+        model = Employee
+        fields = ['name', 'employer']
+
+class CustomUserDoubleform(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = '__all__'
+        exclude = ['full_name']
 
 
 class CustomUserForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = '__all__'
+        # exclude = ['full_name']
 
 
 EmployeeFormSet = inlineformset_factory(CustomUser, Employee, form=CustomUserForm,
