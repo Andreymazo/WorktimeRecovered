@@ -19,7 +19,7 @@ from pip._internal.utils._jaraco_text import _
 from config import settings
 from worktime.filters import CustomUserFilter, TimesheetFilter
 from worktime.forms import CustomUserDoubleform, EmployeeDoubleForm, EmployeeForm\
-    , EmployerDoubleformWithourCustomuser, EmployerFormDoubleform, MyAuthForm, CustomUserForm, TimesheetForm, EmployerForm, WorkTimeForm
+    , EmployerDoubleformWithourCustomuser, EmployerFormDoubleform, MyAuthForm, CustomUserForm, TimesheetCreationForm, TimesheetForm, EmployerForm, WorkTimeForm
 # EmployeeForm, 
 
 from worktime.models import CustomUser, CustomUserTable, EmployeeTable, Employee, EmployerTable, Timesheet\
@@ -615,8 +615,13 @@ class TimesheetLst(ListView):
 
 class TimesheetsCreateView(CreateView):
     model = Timesheet
-    form_class = TimesheetForm
+    form_class = TimesheetCreationForm
     template_name = 'worktime/timesheet_form.html'
+
+    # def get_context_data(self, **kwargs: reverse_lazy) -> dict[str, Any]:
+    #     context = super().get_context_data(**kwargs)
+    #     #Do smthing#
+    #     return context
 
     def get_success_url(self):
         return reverse_lazy('worktime:timesheet_update', kwargs={'pk': self.object.pk})

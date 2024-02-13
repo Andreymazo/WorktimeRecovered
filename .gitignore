@@ -1,12 +1,12 @@
 /.git
 /env/
 .env
-/media/
 __pycache__
 /static/
 workingtime/static/
 /node_modules/
 package-lock.json
 package.json
+bootstrap
 
 

@@ -1,23 +1,58 @@
 {%extends 'worktime/base.html'%}
-  {% block content %}
-<H3>Creating timesheet in progress<H3>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+{% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     <link href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" ></script>
+    
+    
+    <!-- 1. Подключить CSS-файл Bootstrap 3 -->
+      <link rel="stylesheet" href="{% static '/css/css/bootstrap.min.css' %}"/>
+      <!-- 2. Подключить CSS-файл библиотеки Bootstrap 3 DateTimePicker -->
+      <link rel="stylesheet" href= "{% static '/css/bootstrap_datetimepicker/css/bootstrap-datetimepicker.min.css'}" type="text/css"/>
+   
+    
+      <!-- 3. Подключить библиотеку jQuery -->
+      <script src="{% static '/css/bootstrap_datetimepicker/js/jquery.min.js' %}"></script>
+      <!-- 4. Подключить библиотеку moment -->
+      <script src="{% static '/css/bootstrap_datetimepicker/js/moment-with-locales.min.js' %}"></script>
+      <!-- 5. Подключить js-файл фреймворка Bootstrap 3 -->
+      <script src="{% static '/css/bootstrap_datetimepicker/js/bootstrap.min.js' %}"></script>
+      <!-- 6. Подключить js-файл библиотеки Bootstrap 3 DateTimePicker -->
+      <script src="{% static '/css/bootstrap_datetimepicker/js/bootstrap-datetimepicker.min.js' %}"></script>
+      
        <script  type="text/javascript">
     $(document).ready( function() {
     var now = new Date();
     var day = ("0" + now.getDate()).slice(-2);
     var month = ("0" + (now.getMonth() + 1)).slice(-2);
-    var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
-   $('#datePicker').val(today);
+    var hour = ("0" + now.getHours()).slice(-2);
+    var min = ("0" + (now.getMinutes() + 1)).slice(-2);
+    var today = now.getFullYear()+"-"+(month)+"-"+(day)+"-"+(hour)+"-"+(min) ;
+   $('#datetimepicker1').val(today);
 });
+$(function () {
+    // идентификатор элемента (например: #datetimepicker1), для которого необходимо инициализировать виджет Bootstrap DateTimePicker
+    $('#datetimepicker1').datetimepicker();
+  });
      </script>
+
+    </div>
+
+
+<div class="form-group">
+  <!-- элемент input с id = datetimepicker1 -->
+  <div class="input-group" id="datetimepicker1">
+    <input type="text" class="form-control" />
+    <span class="input-group-addon">
+      <span class="glyphicon glyphicon-calendar">
+
+        {% block content %}
+<H3>Creating timesheet in progress<H3>
+ 
 
 
     <div class="row">
@@ -27,17 +62,14 @@
             <form method="post" enctype="multipart/form-data">
               {% csrf_token %}
               {{form.as_p}}
-                    <p>Datetime start<input id="datePicker" type = 'date'  name='datetime_start' ></p>
-                    <p>Datetime complete<input id="datePicker" type = 'date'  name='datetime_complete' ></p>
+                    <p>Datetime start<input id="datetimepicker1" type = 'datetime-local'  name='datetime_start' ></p>
+                    <p>Datetime complete<input id="datetimepicker1" type = 'datetime-local'  name='datetime_complete' ></p>
                     <button type="submit">Submit</button>
                     {{ form.media }}
             </form>
+          </div>
         </div>
       </div>
     </div>
-      {% endblock %}
-    </div>
- <h3>Update timesheet</h3>
-
-
-</form>
+{% endblock %}
+     
