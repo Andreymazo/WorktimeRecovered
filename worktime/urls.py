@@ -38,8 +38,8 @@ urlpatterns = [
     path('employee_delete/<int:pk>', EmployeeDelete.as_view(template_name='workingtime/employee_confirm_delete.html'), name='employee_delete'),
 
     path('timesheet_get_self_time/', TimesheetLst.as_view(), name='timesheet_lst_self_time'),
-    path('timesheet/', TimesheetsFilteredFilterView.as_view(template_name="workingtime/timesheet.html"), name='timesheet'),
-    path('timesheet_create/', TimesheetsCreateView.as_view(template_name="workingtime/timesheet_form.html"), name='timesheet_create'),
+    path('timesheet/', TimesheetsFilteredFilterView.as_view(template_name="worktime/timesheet.html"), name='timesheet'),
+    path('timesheet_create/', TimesheetsCreateView.as_view(template_name="worktime/timesheet_form.html"), name='timesheet_create'),
     path('timesheet_update/<int:pk>', TimesheetsUpdateView.as_view(template_name="workingtime/timesheet_form.html"), name='timesheet_update'),
     path('timesheet_detail/<int:pk>', TimesheetsDetailView.as_view(template_name="workingtime/timesheet_form.html"), name='timesheet_detail'),
     path('timesheet_delete/<int:pk>', TimesheetsDeleteView.as_view(template_name="workingtime/timesheet_confirm_delete.html"), name='timesheet_delete'),

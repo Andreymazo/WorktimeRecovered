@@ -35,5 +35,6 @@ Users: Emploers and Emploees. Emploee starts work day - push the bttn, stop work
 2. Create Eployer at employer_create_with_double_form/ (with 2 forms), employer_create/ (with formset), 
 3. Create Eployee at employee_create_with_doubleform/ (with 2 forms).
 To keep everything in order for each creating endpoint to make self form. For ex. endpoint: "employer_create_with_double_form/" uses _CustomUserDoubleform_, _EmployerDoubleformWithourCustomuser_. Thus we have clear fields at every end point
+4. Create Timesheet at 'timesheet_create/'. 
 
-Andrey Mazo (+79219507391)
+Andrey Mazo (+79219507391, andreymazo@mail.ru)
