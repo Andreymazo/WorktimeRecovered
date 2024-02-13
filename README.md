@@ -40,4 +40,6 @@ To keep everything in order for each creating endpoint to make self form. For ex
     - This in base saved
     ![This in base saved.](/media/Screenshot%20from%202024-02-13%2022-36-40.png)
     
+    there s no _datetime_start_, _datetime_complete_ fields in base/ We have to do this next.
+    
 Andrey Mazo (+79219507391, andreymazo@mail.ru)
