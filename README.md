@@ -38,6 +38,6 @@ To keep everything in order for each creating endpoint to make self form. For ex
 4.  - Create Timesheet at 'timesheet_create/'
     ![Create Timesheet at 'timesheet_create/'.](/media/Screenshot%20from%202024-02-13%2022-09-50.png)
     - This in base saved
-    ![This in base saved.](/media/Screenshot%20from%202024-02-13%2022-36-40.png
+    ![This in base saved.](/media/Screenshot%20from%202024-02-13%2022-36-40.png)
     
 Andrey Mazo (+79219507391, andreymazo@mail.ru)
