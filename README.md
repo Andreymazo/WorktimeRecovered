@@ -50,5 +50,6 @@ To keep everything in order for each creating endpoint to make self form. For ex
         ![worktime](/media/Screenshot%20from%202024-02-14%2010-20-40.png)
     
     
-    
+Who will create timesheet? This is what we will decide and do next. 
+
 Andrey Mazo (+79219507391, andreymazo@mail.ru)
