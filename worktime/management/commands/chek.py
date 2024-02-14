@@ -13,6 +13,7 @@ from worktime.models import CustomUser, Employee, Employer, Timesheet, WorkTime
 class Command(BaseCommand):
     def handle(self, *args, **options):
         # # w = WorkTime.objects.all().last()
+        print(WorkTime.objects.all().exclude(start_break_safe_sheets=None))
         # # w = Timesheet.objects.get(employee='3')
         # # w = WorkTime.objects.all().latest('start_break_safe_sheets').exists()
         # w = WorkTime.objects.all()
@@ -26,7 +27,7 @@ class Command(BaseCommand):
         # #     print(i.start_break_safe_sheets)
         # v=ww.latest('start_break_safe_sheets').start_break_safe_sheets
         # print(ee-v)
-        print('BASE_DIR', BASE_DIR)
+        # print('BASE_DIR', BASE_DIR)
         # print(w.worktime.start_break_safe_sheets)
 
         # print(w)

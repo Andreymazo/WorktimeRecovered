@@ -36,10 +36,19 @@ Users: Emploers and Emploees. Emploee starts work day - push the bttn, stop work
 3. Create Eployee at employee_create_with_doubleform/ (with 2 forms).
 To keep everything in order for each creating endpoint to make self form. For ex. endpoint: "employer_create_with_double_form/" uses _CustomUserDoubleform_, _EmployerDoubleformWithourCustomuser_. Thus we have clear fields at every end point
 4.  - Create Timesheet at 'timesheet_create/'
-    ![Create Timesheet at 'timesheet_create/'.](/media/Screenshot%20from%202024-02-13%2022-09-50.png)
+    ![Create Timesheet at 'timesheet_create/'.](/media/Screenshot%20from%202024-02-14%2010-19-30.png)
     - This in base saved
-    ![This in base saved.](/media/Screenshot%20from%202024-02-13%2022-36-40.png)
+        - customuser
+        ![customuser](/media/Screenshot%20from%202024-02-14%2010-35-00.png)
+        - employer
+        ![employer](/media/Screenshot%20from%202024-02-14%2010-35-13.png)
+        - emloyee
+        ![employee](/media/Screenshot%20from%202024-02-13%2022-08-49.png)
+        - timesheet
+        ![worktime](/media/Screenshot%20from%202024-02-14%2010-19-55.png)
+        - worktime
+        ![worktime](/media/Screenshot%20from%202024-02-14%2010-20-40.png)
     
-    there s no _datetime_start_, _datetime_complete_ fields in base/ We have to do this next.
+    
     
 Andrey Mazo (+79219507391, andreymazo@mail.ru)

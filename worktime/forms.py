@@ -100,11 +100,11 @@ class TimesheetCreationForm(forms.ModelForm):
     class Meta:
         model = Timesheet
         fields = '__all__'
-        exclude = ['datetime_start', 'datetime_complete',]
-        widgets = {
-            "datetime_start": DatePickerInput(options={"format": "y-m-d H-M", "value": timezone.now().strftime("%Y-%m-%d %H-%M")}),
-            "datetime_complete": DatePickerInput(options={"format": "y-m-d H-M", "value": timezone.now().strftime("%Y-%m-%d %H-%M")})
-              }
+        # exclude = ['datetime_start', 'datetime_complete',]
+
+        widgets = {"datetime_start":forms.DateTimeInput(format=('%Y-%m-%dT%H:%M'), attrs={'type': 'datetime-local'}),
+                   "datetime_complete": forms.DateTimeInput(format=('%Y-%m-%dT%H:%M'), attrs={'type': 'datetime-local'})
+                   }
 
 
 class WorkTimeForm(forms.ModelForm):

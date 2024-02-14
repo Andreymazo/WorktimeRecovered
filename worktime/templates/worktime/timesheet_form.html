@@ -62,8 +62,6 @@ $(function () {
             <form method="post" enctype="multipart/form-data">
               {% csrf_token %}
               {{form.as_p}}
-                    <p>Datetime start<input id="datetimepicker1" type = 'datetime-local'  name='datetime_start' ></p>
-                    <p>Datetime complete<input id="datetimepicker1" type = 'datetime-local'  name='datetime_complete' ></p>
                     <button type="submit">Submit</button>
                     {{ form.media }}
             </form>
