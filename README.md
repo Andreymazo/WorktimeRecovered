@@ -48,8 +48,12 @@ To keep everything in order for each creating endpoint to make self form. For ex
         ![worktime](/media/Screenshot%20from%202024-02-14%2010-19-55.png)
         - worktime
         ![worktime](/media/Screenshot%20from%202024-02-14%2010-20-40.png)
+
+        - I created another private repository. From which:
+        ![worktime](/media/Screenshot%20from%202024-02-24%2016-58-20.png)
+
+        Ill try to locate emloyer in one block and table of employees in another.
     
     
-Employer create timesheet. What will he see and what functions he is able to perform with data Emploee concerned? This is what we will decide and do next.
 
 Andrey Mazo (+79219507391, andreymazo@mail.ru)
