@@ -53,6 +53,7 @@ To keep everything in order for each creating endpoint to make self form. For ex
         ![worktime](/media/Screenshot%20from%202024-02-24%2016-58-20.png)
 
         Ill try to locate emloyer in one block and table of employees in another.
+        next step will be individual calendar of each employee, (ive already have it in back, want to have in front)
     
     
 
