@@ -50,10 +50,10 @@ To keep everything in order for each creating endpoint to make self form. For ex
         ![worktime](/media/Screenshot%20from%202024-02-14%2010-20-40.png)
 
         - I created another private repository. From which:
-        ![worktime](/media/Screenshot%20from%202024-03-01%2009-52-18.png)
+        ![worktime](/media/Screenshot%20from%202024-03-02%2014-56-31.png)
 
-        Ill try to locate emloyer in one block and table of employees in another.
-        Employer can see list of his employees, he can choose one of them and see his calendar (total working days, holidays) or can enter custom date_start date_end and see custom prodaction calendar.
+        
+        custom prodaction calendar: Day, Day of week, Year and month. Later - national holidays and some more things? dont know what are yet
     
     
 
