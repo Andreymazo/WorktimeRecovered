@@ -50,10 +50,12 @@ To keep everything in order for each creating endpoint to make self form. For ex
         ![worktime](/media/Screenshot%20from%202024-02-14%2010-20-40.png)
 
         - I created another private repository. From which:
-        ![worktime](/media/Screenshot%20from%202024-03-02%2014-56-31.png)
+        ![worktime](/media/Screenshot%20from%202024-03-02%2018-34-15.png)
 
         
-        custom prodaction calendar: Day, Day of week, Year and month. Later - national holidays and some more things? dont know what are yet
+        custom prodaction calendar: Day, Day of week, Year and month. Later - national holidays and some more things? dont know what are yet.
+        nationality can be taken from django country lib, but i guess better way to take it without additional lib, without models, just copy file from 'https://public.opendatasoft.com/explore/embed/dataset/countries-codes/table/' and use form choice field
+
     
     
 
