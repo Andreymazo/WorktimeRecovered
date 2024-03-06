@@ -53,6 +53,8 @@ To keep everything in order for each creating endpoint to make self form. For ex
         ![worktime](/media/Screenshot%20from%202024-03-04%2009-08-24.png)
         ![worktime](/media/Screenshot%20from%202024-03-05%2000-56-00.png)
         ![worktime](/media/Screenshot%20from%202024-03-05%2000-55-01.png)
+        добавляем праздики, сохраняем в базу, выводим в табличку слева на темплейте.
+         ![worktime](/media/Screenshot%20from%202024-03-06%2014-20-57.png)
 
 
 
