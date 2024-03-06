@@ -56,10 +56,14 @@ To keep everything in order for each creating endpoint to make self form. For ex
 
 
 
+
         
         custom prodaction calendar: Day, Day of week, Year and month. Later - national holidays and some more things? dont know what are yet.
         nationality can be taken from django country lib, but i guess better way to take it without additional lib, without models, just copy file from 'https://public.opendatasoft.com/explore/embed/dataset/countries-codes/table/' and use form choice field
         All info what we can can gather without base and django instruments we must gather (in the left top corner), and I think its the moment when we can start to use models. Lets gather holidays concerned the employer and will save only these holidays in base. списки работодателей и работников, по работодателю переходим в его интерфейс, вылезают только его работники
+        Eployer add holidays to his employee. Two forms working indepedantly (more or less). Employer can add holidays and calculate something, thus see changings he made. Later will convert all this in money.
+        ![worktime](/media/Screenshot%20from%202024-03-06%2012-04-37.png)
+        ![worktime](/media/Screenshot%20from%202024-03-06%2012-03-49.png)
 
     
     
