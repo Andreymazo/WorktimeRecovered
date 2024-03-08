@@ -61,7 +61,14 @@ To keep everything in order for each creating endpoint to make self form. For ex
         ![worktime](/media/Screenshot%20from%202024-03-06%2012-03-49.png)
 
         добавляем праздики, сохраняем в базу, выводим в табличку слева на темплейте.
-         ![worktime](/media/Screenshot%20from%202024-03-06%2014-27-05.png)
+        ![worktime](/media/Screenshot%20from%202024-03-06%2014-27-05.png)
+
+        добавляем CounterAgent, UpLoadFilesModel грузим файлы каждая модель (Employer, Employee, CounterAgent) в свою папку
+        ![worktime](/media/Screenshot%20from%202024-03-08%2010-45-33.png)
+        ![worktime](/media/Screenshot%20from%202024-03-08%2010-46-11.png)
+
+
+        
     
 
 Andrey Mazo (+79219507391, andreymazo@mail.ru)
