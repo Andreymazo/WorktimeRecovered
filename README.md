@@ -67,6 +67,16 @@ To keep everything in order for each creating endpoint to make self form. For ex
         ![worktime](/media/Screenshot%20from%202024-03-08%2010-45-33.png)
         ![worktime](/media/Screenshot%20from%202024-03-08%2010-46-11.png)
 
+        немного кода 
+        ![worktime](/media/Screenshot%20from%202024-03-11%2001-03-05.png)
+        ![worktime](/media/Screenshot%20from%202024-03-11%2001-03-57.png)
+        ![worktime](/media/Screenshot%20from%202024-03-11%2001-04-43.png)
+
+        we have much space for manouvering. in code commented we locate file depending on request, in uncomment we locate exact where we show to locate
+
+
+
+
 
         
     
