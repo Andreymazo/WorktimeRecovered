@@ -74,8 +74,9 @@ To keep everything in order for each creating endpoint to make self form. For ex
         ![worktime](/media/Screenshot%20from%202024-03-11%2001-17-52.png)
 
         we have much space for manouvering. in code commented we locate file depending on request, in uncomment we locate exact where we show to locate
-        Next step lets create oportunity to Employer to organize employee's notifications. For that we'll have to read some docs and variants of organization. Useing of admin panel to handle this task is not the best idea, all must be done on client side in browser.  
-
+        Next step lets create oportunity to Employer to organize employee's notifications. For that we'll have to read some docs and variants of organization. Useing of admin panel to handle this task is not the best idea, all must be done on client side in browser.
+        - Create message box, chek if notification, who is request.user (Employer, Employee, Counteragent), show mssg if for him and accept mmsg from him, generate back bttn from mssg box. Little video:
+        <video src='/media/Screencast from 13.03.2024 00:08:09.webm' width=180/>
 
 
 
