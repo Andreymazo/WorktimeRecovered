@@ -78,9 +78,10 @@ To keep everything in order for each creating endpoint to make self form. For ex
         - Create message box, chek if notification, who is request.user (Employer, Employee, Counteragent), show mssg if for him and accept mmsg from him, generate back bttn from mssg box. Little video:
         [Screencast from 13.03.2024 00:08:09.webm](https://github.com/Andreymazo/WorktimeRecovered/assets/116811819/0031c364-d15a-49a4-ae8b-c1d82ce14cd5)
 
-        [Screencast from 13.03.2024 14:28:11.webm](https://github.com/Andreymazo/WorktimeRecovered/assets/116811819/642e1958-4098-4ec7-935a-7977d2b98ab1)
+        [Screencast from 14.03.2024 01:52:48.webm](https://github.com/Andreymazo/WorktimeRecovered/assets/116811819/ef59ed82-4738-45a3-97a9-b63bcc341f9f)
 
-        [Screencast from 13.03.2024 18:41:21.webm](https://github.com/Andreymazo/WorktimeRecovered/assets/116811819/68c27e38-69b6-4fca-bc67-ef45106a630f)
+
+        
 
 
 
