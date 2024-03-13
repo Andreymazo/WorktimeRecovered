@@ -80,6 +80,9 @@ To keep everything in order for each creating endpoint to make self form. For ex
 
         [Screencast from 13.03.2024 14:28:11.webm](https://github.com/Andreymazo/WorktimeRecovered/assets/116811819/642e1958-4098-4ec7-935a-7977d2b98ab1)
 
+        [Screencast from 13.03.2024 18:41:21.webm](https://github.com/Andreymazo/WorktimeRecovered/assets/116811819/68c27e38-69b6-4fca-bc67-ef45106a630f)
+
+
 
        
 
