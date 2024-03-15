@@ -69,7 +69,7 @@ To keep everything in order for each creating endpoint to make self form. For ex
 
         немного кода 
         ![worktime](/media/Screenshot%20from%202024-03-11%2001-03-05.png)
-        ![worktime](/media/Screenshot%20from%202024-03-11%2001-03-57.png)
+       
         ![worktime](/media/Screenshot%20from%202024-03-11%2001-04-43.png)
         ![worktime](/media/Screenshot%20from%202024-03-11%2001-17-52.png)
 
