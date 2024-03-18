@@ -82,7 +82,7 @@ To keep everything in order for each creating endpoint to make self form. For ex
 
         [Screencast from 19.03.2024 01:44:19.webm](https://github.com/Andreymazo/WorktimeRecovered/assets/116811819/1f9c20ae-0f9d-4344-ba0e-2da18525eff8)
 
-
+        suppose 2nd url faster then 1st
 
         
     
