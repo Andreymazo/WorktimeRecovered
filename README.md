@@ -80,11 +80,13 @@ To keep everything in order for each creating endpoint to make self form. For ex
 
         [Screencast from 16.03.2024 00:54:51.webm](https://github.com/Andreymazo/WorktimeRecovered/assets/116811819/75bc66e8-1f67-4686-9a39-669a649110cc)
 
-        [Screencast from 19.03.2024 01:44:19.webm](https://github.com/Andreymazo/WorktimeRecovered/assets/116811819/1f9c20ae-0f9d-4344-ba0e-2da18525eff8)
+    Two aproachies to create message room, result almost the same:
 
-        suppose 2nd url faster then 1st
+        ![worktime](/media/Screenshot%20from%202024-03-21%2022-38-28.png)
 
-        
-    
+        ![worktime](/media/Screenshot%20from%202024-03-21%2022-37-17.png)
+
+
+
 
 Andrey Mazo (+79219507391, andreymazo@mail.ru)
