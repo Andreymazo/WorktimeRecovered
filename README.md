@@ -80,7 +80,7 @@ To keep everything in order for each creating endpoint to make self form. For ex
 
         [Screencast from 16.03.2024 00:54:51.webm](https://github.com/Andreymazo/WorktimeRecovered/assets/116811819/75bc66e8-1f67-4686-9a39-669a649110cc)
 
-    Two aproachies to create message room, result almost the same:
+        Two aproachies to create message room, result almost the same:
 
         ![worktime](/media/Screenshot%20from%202024-03-21%2022-38-28.png)
 
