@@ -94,6 +94,11 @@ To keep everything in order for each creating endpoint to make self form. For ex
 
         [Screencast from 22.03.2024 22:32:50.webm](https://github.com/Andreymazo/WorktimeRecovered/assets/116811819/7df0753d-28b5-4bcb-9529-03a8d8e2a21a)
 
+        - One block ready
+
+        [Screencast from 22.03.2024 23:44:23.webm](https://github.com/Andreymazo/WorktimeRecovered/assets/116811819/8ea32fc7-ce71-4291-9fc8-2499ed30f94f)
+
+
 
 
 
