@@ -85,6 +85,10 @@ To keep everything in order for each creating endpoint to make self form. For ex
         ![worktime](/media/Screenshot%20from%202024-03-21%2022-38-28.png)
 
         ![worktime](/media/Screenshot%20from%202024-03-21%2022-37-17.png)
+      - First steps in popup windows
+
+        [Screencast from 22.03.2024 13:12:05.webm](https://github.com/Andreymazo/WorktimeRecovered/assets/116811819/afbf4b31-5120-44a0-be2c-c1e05507ab6f)
+
 
 
 
