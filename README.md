@@ -31,6 +31,8 @@ Users: Emploers and Emploees. Emploee starts work day - push the bttn, stop work
 
 
 
+
+
 1. Use command files to initial base filling: For ex. _python3 manage.py create_super_user_ will be enough to start.
 2. Create Eployer at employer_create_with_double_form/ (with 2 forms), employer_create/ (with formset), 
 3. Create Eployee at employee_create_with_doubleform/ (with 2 forms).
@@ -97,8 +99,10 @@ To keep everything in order for each creating endpoint to make self form. For ex
         - One block ready
 
         [Screencast from 22.03.2024 23:44:23.webm](https://github.com/Andreymazo/WorktimeRecovered/assets/116811819/8ea32fc7-ce71-4291-9fc8-2499ed30f94f)
+  
+        - Calendar as table with links to event_list. Calendar also todo later.
 
-
+        [Screencast from 24.03.2025 23:57:53.webm](https://github.com/user-attachments/assets/0dca734d-1912-4481-9a6e-6719312dfccd)
 
 
 
