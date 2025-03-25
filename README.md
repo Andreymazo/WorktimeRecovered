@@ -102,7 +102,8 @@ To keep everything in order for each creating endpoint to make self form. For ex
   
         - Calendar as table with links to event_list. Calendar also.
 
-        [Screencast from 25.03.2025 15:48:36.webm](https://github.com/user-attachments/assets/18e4e9df-09ca-4d18-85cb-279c0bccbd01)
+        [Screencast from 25.03.2025 15:48:36.webm](https://github.com/user-attachments/assets/26e1c4ff-db74-4f4c-b7a8-dd1bedcec6d7)
+
 
 
 
