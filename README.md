@@ -100,9 +100,10 @@ To keep everything in order for each creating endpoint to make self form. For ex
 
         [Screencast from 22.03.2024 23:44:23.webm](https://github.com/Andreymazo/WorktimeRecovered/assets/116811819/8ea32fc7-ce71-4291-9fc8-2499ed30f94f)
   
-        - Calendar as table with links to event_list. Calendar also todo later.
+        - Calendar as table with links to event_list. Calendar also.
 
-        [Screencast from 24.03.2025 23:57:53.webm](https://github.com/user-attachments/assets/0dca734d-1912-4481-9a6e-6719312dfccd)
+        [Screencast from 25.03.2025 15:48:36.webm](https://github.com/user-attachments/assets/18e4e9df-09ca-4d18-85cb-279c0bccbd01)
+
 
 
 
